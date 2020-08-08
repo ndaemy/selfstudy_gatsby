@@ -1,7 +1,7 @@
 import React from "react"
+import Layout from "../components/layout"
 import Header from "../components/header"
-import Container from "../components/container"
-import styles from "./about-css-modules.module.css"
+import styles from "./about.module.css"
 
 interface UserProps {
   username: string
@@ -23,7 +23,7 @@ function User({ avatar, username, excerpt }: UserProps) {
 
 function About() {
   return (
-    <Container>
+    <Layout>
       <Header headerText="About CSS Modules" />
       <p>CSS Modules are cool</p>
       <User
@@ -36,7 +36,7 @@ function About() {
         avatar="https://s3.amazonaws.com/uifaces/faces/twitter/vladarbatov/128.jpg"
         excerpt="I'm Bob Smith, a vertically aligned type of guy. Lorem ipsum dolor sit amet, consectetur adipisicing elit."
       />
-    </Container>
+    </Layout>
   )
 }
 
