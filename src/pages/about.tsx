@@ -1,43 +1,27 @@
 import React from "react"
+import { graphql } from "gatsby"
 import Layout from "../components/layout"
-import Header from "../components/header"
-import styles from "./about.module.css"
 
-interface UserProps {
-  username: string
-  avatar: string
-  excerpt: string
-}
-
-function User({ avatar, username, excerpt }: UserProps) {
-  return (
-    <div className={styles.user}>
-      <img src={avatar} className={styles.avatar} alt="" />
-      <div className={styles.description}>
-        <h2 className={styles.username}>{username}</h2>
-        <p className={styles.excerpt}>{excerpt}</p>
-      </div>
-    </div>
-  )
-}
-
-function About() {
+function About({ data }) {
   return (
     <Layout>
-      <Header headerText="About CSS Modules" />
-      <p>CSS Modules are cool</p>
-      <User
-        username="Jane Doe"
-        avatar="https://s3.amazonaws.com/uifaces/faces/twitter/adellecharles/128.jpg"
-        excerpt="I'm Jane Doe. Lorem ipsum dolor sit amet, consectetur adipisicing elit."
-      />
-      <User
-        username="Bob Smith"
-        avatar="https://s3.amazonaws.com/uifaces/faces/twitter/vladarbatov/128.jpg"
-        excerpt="I'm Bob Smith, a vertically aligned type of guy. Lorem ipsum dolor sit amet, consectetur adipisicing elit."
-      />
+      <h1>About {data.site.siteMetadata.title}</h1>
+      <p>
+        We're the only site running on your computer dedicated to showing the
+        best photos and videos of pandas eating lots of food.
+      </p>
     </Layout>
   )
 }
+
+export const query = graphql`
+  query {
+    site {
+      siteMetadata {
+        title
+      }
+    }
+  }
+`
 
 export default About
